@@ -1,0 +1,57 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+addRule	store.js	/^    addRule(state, rule) {$/;"	M
+addToLog	store.js	/^    addToLog(state, log) {$/;"	M
+app	renderer.js	/^const app = new Vue({$/;"	V
+as	store.js	/^          as: '$',$/;"	P
+cheerio	store.js	/^        cheerio: "res.$('title').text('☠️'); res.$title.body('pwn');",$/;"	P
+cheerio	store.js	/^        cheerio: 'res.statusCode =  404;',$/;"	P
+closeProxyServer	store.js	/^    closeProxyServer(state) {$/;"	M
+closeProxyServer	store.js	/^    closeProxyServer({ commit }) {$/;"	M
+createWindow	main.js	/^function createWindow() {$/;"	F
+created	renderer.js	/^  created() {$/;"	M
+el	renderer.js	/^  el: '#app',$/;"	P
+filterLogs	store.js	/^    filterLogs({ commit }, filter) {$/;"	M
+filteredLogs	renderer.js	/^    filteredLogs() {$/;"	M
+height	main.js	/^    height: 600,$/;"	P
+logs	store.js	/^    logs: [],$/;"	P
+logs	store.js	/^    logs: state => state.logs,$/;"	P
+logsFilter	renderer.js	/^    logsFilter() {$/;"	M
+logsFilter	store.js	/^    logsFilter: '',$/;"	P
+mainWindow	main.js	/^    mainWindow = null;$/;"	P
+message	renderer.js	/^    message: 'Hello Vue!',$/;"	P
+nodeIntegration	main.js	/^      nodeIntegration: true,$/;"	P
+phase	store.js	/^          phase: 'request',$/;"	P
+phase	store.js	/^          phase: 'response',$/;"	P
+proxyServer	store.js	/^    proxyServer: '',$/;"	P
+proxyStatus	renderer.js	/^    proxyStatus: '',$/;"	P
+regex	store.js	/^        regex: \/GitHub.com\/i,$/;"	P
+regex	store.js	/^        regex: \/example.com\/i,$/;"	P
+rules	renderer.js	/^    rules() {$/;"	M
+rules	store.js	/^    rules: [$/;"	P
+rules	store.js	/^    rules: state => state.rules,$/;"	P
+saveNewRule	store.js	/^    saveNewRule({ commit }, rule) {$/;"	M
+selectLog	store.js	/^    selectLog({ commit }, log) {$/;"	M
+selectRule	store.js	/^    selectRule({ commit }, rule) {$/;"	M
+selectedLog	renderer.js	/^    selectedLog() {$/;"	M
+selectedLog	store.js	/^    selectedLog: '',$/;"	P
+selectedLog	store.js	/^    selectedLog: state => state.selectedLog,$/;"	P
+selectedRule	renderer.js	/^    selectedRule() {$/;"	M
+selectedRule	store.js	/^    selectedRule: '',$/;"	P
+selectedRule	store.js	/^    selectedRule: state => state.selectedRule,$/;"	P
+setLogFilter	renderer.js	/^    setLogFilter(filter) {$/;"	M
+setLogsFilter	store.js	/^    setLogsFilter(state, filter) {$/;"	M
+setProxyServer	store.js	/^    setProxyServer(state, server) {$/;"	M
+setSelectedLog	renderer.js	/^    setSelectedLog(log) {$/;"	M
+setSelectedLog	store.js	/^    setSelectedLog(state, log) {$/;"	M
+setSelectedRule	renderer.js	/^    setSelectedRule(rule) {$/;"	M
+setSelectedRule	store.js	/^    setSelectedRule(state, rule) {$/;"	M
+startProxy	renderer.js	/^    startProxy() {$/;"	M
+startProxyServer	store.js	/^    startProxyServer({ commit, state }) {$/;"	M
+stopProxy	renderer.js	/^    stopProxy() {$/;"	M
+store	store.js	/^const store = new Vuex.Store({$/;"	V
+width	main.js	/^    width: 800,$/;"	P

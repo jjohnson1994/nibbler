@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Nibbler</title>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vuex@3.1.0/dist/vuex.js"></script>
+	<script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+	<link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  </head>
+  <body>
+    <div id="app">
+	  <v-app>
+		<v-toolbar>
+		  <v-text-field
+			solo-inverted
+			flat
+			hide-details
+			label="Search"
+		 	prepend-inner-icon="search"
+            :value="logsFilter"
+            @input="filter => setLogFilter(filter)"
+		  ></v-text-field>
+		  <v-spacer></v-spacer>
+		  <v-btn icon>
+			<v-icon>fiber_manual_record</v-icon>
+		  </v-btn>
+		  <v-btn icon>
+			<v-icon>stop</v-icon>
+		  </v-btn>
+		  <v-btn icon>
+			<v-icon>refresh</v-icon>
+		  </v-btn>
+		</v-toolbar>
+		<v-content>
+		  <v-container fluid>
+			<v-layout row>
+			  <v-flex xs6 style="max-height: 90vh; overflow-y: scroll; margin-right: 1rem">
+				<v-list style="background: none" :dense="true" three-line>
+				  <template v-for="(log, index) in filteredLogs">
+                    <v-list-tile ripple @click="setSelectedLog(log)">
+					  <v-list-tile-content v-if="log.phase === 'request' || log.phase === 'request-sent'">
+                        <v-list-tile-title>{{ log._data.method }} {{ log._data.hostname }}</v-list-tile-title>
+                        <v-list-tile-sub-title>{{ log._data.url }}</v-list-tile-sub-title>
+					  </v-list-tile-content>
+                      <v-list-tile-content v-if="log.phase === 'response' || log.phase === 'response-sent'">
+                      <v-list-tile-title>{{ log._data.statusCode }} {{ log._data.headers.server }}</v-list-tile-title>
+                        <v-list-tile-sub-title>{{ log._data.headers["content-type"] }}</v-list-tile-sub-title>
+                      </v-list-tile-content>
+					</v-list-tile>
+				  </template>
+				</v-list>
+			  </v-flex>
+              <v-flex xs6>
+                <v-card >
+                  <v-tabs>
+                    <v-tab ripple>Inspect</v-tab>
+                    <v-tab ripple>Intercept</v-tab>
+                    <v-tab-item>
+                      <v-card-title v-if="selectedLog" primary-title>
+                        <div>
+                          <h3 class="headline mb-0">{{ selectedLog._data.method }} {{ selectedLog._data.hostname }}</h3>
+                          <div>{{ selectedLog._data.url }}</div>
+                        </div>
+                      </v-card-title>
+                      <v-card-text v-if="selectedLog">
+                        <v-subheader>Headers</v-subheader>
+                        {{ selectedLog }}
+                        <v-subheader>Data</v-subheader>
+                        {{ selectedLog.string }}
+                      </v-card-text>
+                    </v-tab-item>
+                    <v-tab-item>
+                      <v-card-text>
+                        <v-list>
+                          <v-list-tile ripple @click="setSelectedRule(rule)" v-for="(rule, index) in rules">
+                            <v-list-tile-content>
+                              <v-list-tile-title>1 {{ rule.regex }}</v-list-tile-title>
+                            </v-list-tile-content>
+                            <v-list-tile-action v-if="selectedRule && selectedRule.regex === rule.regex">
+                              <v-icon>filter_list</v-icon>
+                            </v-list-tile-action>
+                          </v-list-tile>
+                        </v-list>
+                        <v-form>
+                          <v-text-field label="Regex Match"></v-text-field>
+                          <v-textarea label="Cheerio Code"></v-textarea>
+                        </v-form>
+                      </v-card-text>
+                    </v-tab-item>
+                  </v-tabs>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn flat icon> 
+                      <v-icon>save</v-icon>
+                    </v-btn>
+                    <v-btn flat icon> 
+                      <v-icon>bookmark</v-icon>
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-flex>
+			</v-layout>
+		  </v-container>
+		</v-content>
+		<v-footer app></v-footer>
+	  </v-app>
+    </div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
